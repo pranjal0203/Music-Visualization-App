@@ -140,85 +140,66 @@
                 <button> Go </button>
             </div>
         </section>
-        <div class="main ">
-        <header> <div class="right floated user-name">  </div> </header>
-        <section class="content">
-          <audio src="song.mp3" ></audio>
-        </section>
-        <footer>
-        <div class="controls">
-        <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
+        <div class="main">
+            <header>
+                <div class="right floated user-name"> </div>
+            </header>
+            <section class="content">
+                <audio src="song.mp3"></audio>
+                <div class="list-headers">
+        <div> Title </div>
+        <div> Artist </div>
+        <div> Album </div>
+        <div> Duration </div>
         </div>
-        </footer>
+        <div class="song-list">
+            <div class="song" id ="song1">
+                <span  class="song-name"></span>
+                <span class="song-artist"></span>
+                <span class="song-album"></span>
+                <span class="song-length"></span>
+            </div>
+            <div class="song" id ="song2">
+                <span  class="song-name"></span>
+                <span class="song-artist"></span>
+                <span class="song-album"></span>
+                <span class="song-length"></span>
+            </div>
+            <div class="song" id ="song3">
+                <span  class="song-name"></span>
+                <span class="song-artist"></span>
+                <span class="song-album"></span>
+                <span class="song-length"></span>
+            </div>
+            <div class="song" id ="song4">
+                <span  class="song-name"></span>
+                <span class="song-artist"></span>
+                <span class="song-album"></span>
+                <span class="song-length"></span>
+            </div>
+        </div>
+            </section>
+            <footer>
+                <div class="controls">
+                    <div class="player-buttons">
+                        <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="progress-wrapper">
+                        <span class="time-elapsed"> </span>
+                        <div class="player-progress">
+                            <div class="progress-filled"> </div>
+                        </div>
+                        <span class="song-duration"></span>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
-
+    <script src="jquery.js"></script>
     <script src="jquery.js"></script>
     <!-- <script src="//code.jquery.com/jquery-1.4.1.min.js"></script> -->
-    <script src="scripts/jquery.msgBox.js" type="text/javascript">
-    </script>
-
-    <script>
-
-    // adding functionality to play button
-    $('.play-icon').on('click',function(){
-      // code here
-      var song = document.querySelector('audio');
-
-      if(song.paused == true){
-        $('.play-icon').removeClass("fa-play");
-        $('.play-icon').addClass("fa-pause");
-        song.play();
-      }
-      else {
-        $('.play-icon').removeClass("fa-pause");
-        $('.play-icon').addClass("fa-play");
-        song.pause();
-      }
-    });
-
-    // Playing and pausing through keyboard
-    $('body').on('keypress',function(event){
-      //code here
-      if(event.keyCode == 32){
-        var song = document.querySelector('audio');
-
-        if(song.paused == true){
-          $('.play-icon').removeClass("fa-play");
-          $('.play-icon').addClass("fa-pause");
-          song.play();
-        }
-        else {
-          $('.play-icon').removeClass("fa-pause");
-          $('.play-icon').addClass("fa-play");
-          song.pause();
-        }
-      }
-
-    });
-
-    // Welcome screen functionality
-    $('.welcome-screen button').on('click', function() {
-    var name = $('#name-input').val();
-
-    if(name.length > 2){
-    var message = "Welcome, " + name;
-    $('.main .user-name').text(message);
-    $('.welcome-screen').addClass('hidden');
-    $('.main').removeClass('hidden');}
-
-    else{
-      $.msgBox({
-        title: "Ooops",
-        content: "Ohh dear! Please enter the correct name!!!",
-        type: "error",
-        showButtons: false,
-        opacity: 0.5,
-        autoClose:true
-        });
-    }
-});
-</script>
+    <script src="scripts/jquery.msgBox.js" type="text/javascript"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
