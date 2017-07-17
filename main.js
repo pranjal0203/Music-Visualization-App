@@ -51,25 +51,35 @@ function updateCurrentTime(){
 }
 
 //Creating function for click of event of song
-function addSongNameClickEvent(songName,position) {
+function addSongNameClickEvent(songObj,position) {
       var id = '#song' + position;
       $(id).click(function() {
       var audio = document.querySelector('audio');
       var currentSong = audio.src;
-      if(currentSong.search(songName) != -1)
+      if(currentSong.search(songObj.fileName) != -1)
       {
-      toggleSong();
+        toggleSong();
       }
       else {
-      audio.src = songName;
+      audio.src = songObj.fileName;
       toggleSong();
+      changeCurrentSongDetails(songObj);
       }
       });
+}
+
+//Changing icon of song
+
+function changeCurrentSongDetails(songObj) {
+    $('.current-song-image').attr('src','img/' + songObj.image)
+    $('.current-song-name').text(songObj.name)
+    $('.current-song-album').text(songObj.album)
 }
 
 //calling function currentTime on window loading and after every 1 sec
 
 window.onload = function(){
+
 
     updateCurrentTime();
     setInterval(function() {
@@ -79,34 +89,39 @@ window.onload = function(){
     //Creating Array of objects for song names and other details
 
     var songs =  [{
-                    'name': 'Badri Ki Dulhania (Title Track)',
+                    'name': 'Yarriyan',
                     'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
-                    'album': 'Badrinath ki Dulhania',
-                    'duration': '2:56',
-                   'fileName': 'song1.mp3'
+                    'album': 'Cocktail',
+                    'duration': '6:17',
+                   'fileName': 'song1.mp3',
+                    'image' : 'song1.jpg'
                  },
                  {
-                    'name': 'Humma Song',
-                    'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
-                    'album': 'Ok Jaanu',
-                    'duration': '3:15',
-                    'fileName': 'song2.mp3'
+                    'name': 'You Belong With Me',
+                    'artist': 'Taylor swift',
+                    'album': 'Fearless',
+                    'duration': '3:52',
+                    'fileName': 'song2.mp3',
+                    'image' : 'song2.jpg'
                   },
                   {
-                    'name': 'Nashe Si Chadh Gayi',
-                    'artist': 'Arijit Singh',
-                    'album': 'Befikre',
-                    'duration': '2:34',
-                    'fileName': 'song3.mp3'
+                    'name': 'Phir se ud chala',
+                    'artist': 'Mohit Chauchan',
+                    'album': 'Rockstar',
+                    'duration': '4:30',
+                    'fileName': 'song3.mp3',
+                    'image' : 'song3.jpg'
                   },
                   {
-                    'name': 'The Breakup Song',
-                    'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+                    'name': 'Teri Meri',
+                    'artist': 'Nakash Aziz, Arijit Singh, Rahet Fateh Ali',
                     'album': 'Ae Dil Hai Mushkil',
-                    'duration': '2:29',
-                    'fileName': 'song4.mp3'
+                    'duration': '5:27',
+                    'fileName': 'song4.mp3',
+                    'image' : 'song4.jpg'
                   }];
 
+      changeCurrentSongDetails(songs[0]);
       for(var i=0;i<songs.length;i++){
             var obj = songs[i];
             var name = "#song" + (i+1);
@@ -115,8 +130,13 @@ window.onload = function(){
             song.find('.song-artist').text(obj.artist);
             song.find('.song-album').text(obj.album);
             song.find('.song-length').text(obj.duration);
-            addSongNameClickEvent(obj.fileName,i+1)
-      }
+            addSongNameClickEvent(obj,i+1)
+        }
+
+        //Initializing dataTables
+        $('#songs').DataTable({
+          paging: false
+        });
 
 }
 
