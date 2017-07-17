@@ -7,146 +7,29 @@
     <link rel="stylesheet" type="text/css" href="font-awesome.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="main.css">
-    <!-- <link rel="stylesheet" type="text/css" href="anim.css"> -->
-    <!-- <link href="styles/msgBoxLight.css" rel="stylesheet" type="text/css"> -->
 </head>
 
 <body>
 
-  <!-- //Animation
-
-  <div class="wrapper">
-        <div class="line line1">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line2">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line3">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line4">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line5">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line6">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line7">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line8">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line9">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line10">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-        <div class="line line11">
-            <span class="circle circle-top"></span>
-            <div class="dotted">
-                <span class="dot dot-top"></span>
-                <span class="dot dot-middle-top"></span>
-                <span class="dot dot-middle-bottom"></span>
-                <span class="dot dot-bottom"></span>
-            </div>
-            <span class="circle circle-bottom"></span>
-        </div>
-    </div> -->
-    <!-- <footer> -->
-        <!-- <p style="color: #fff">Inspired by <a href="https://dribbble.com/shots/1763719-DNA-GIF">Handel Eugene <img src="https://d13yacurqjgara.cloudfront.net/assets/dribbble-ball-dnld-5992b20594860fdfef86a503773447ae.png" alt="dribble"></a></p> -->
-    <!-- </footer> -->
-
-
     <div class="wrapper">
-        <section class="welcome-screen hidden">
-            <h1> Welcome to Songify </h1>
+        <section class="welcome-screen ">
+            <h1> Welcome to Music Visualization App </h1>
             <h3> Enter name to access your account </h3>
             <div class="input-wrapper">
                 <input type="text" placeholder="Name" id="name-input">
                 <button> Go </button>
             </div>
+            <div class="alert alert-danger alert-dismissible hidden" role="alert">
+              <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+              <strong>Error!</strong>Please Enter Correct Name
+            </div>
         </section>
-        <div class="main">
+        <div class="main hidden">
             <header>
                 <div class="right floated user-name"> </div>
             </header>
             <section class="content">
-                <audio src="song1.mp3"></audio>
+                <audio id ="audioElement" src="song1.mp3"></audio>
 
           <table id="songs">
               <thead class="list-headers">
@@ -194,7 +77,12 @@
             <footer>
                 <div class="controls">
                     <div class="player-buttons">
+                        <i class="fa fa-random clickable disabled" aria-hidden="true"></i>
+                        <i class="fa fa-step-backward clickable" aria-hidden="true"></i>
                         <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
+                        <i class="fa fa-step-forward clickable" aria-hidden="true"></i>
+                        <i class="fa fa-repeat disabled clickable" aria-hidden="true"></i>
+
                     </div>
                     <div class="progress-wrapper">
                         <span class="time-elapsed"> </span>
@@ -202,14 +90,14 @@
                             <div class="progress-filled"> </div>
                         </div>
                         <span class="song-duration"></span>
+
                     </div>
+
                 </div>
             </footer>
         </div>
     </div>
     <script src="jquery.js"></script>
-    <!-- <script src="//code.jquery.com/jquery-1.4.1.min.js"></script> -->
-    <!-- <script src="scripts/jquery.msgBox.js" type="text/javascript"></script> -->
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
       <script src="main.js"></script>
 </body>

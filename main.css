@@ -207,6 +207,10 @@ table.dataTable tbody tr {
     font-size: 16px;
 }
 
-One Last Thing. Let's turn off the page count. This doesn't look nice
-POWER OF PLUGINS
-Now we can sort any song by paramter just by clicking on its heading
+.player-buttons .fa{
+    margin-right: 2rem; // 2*body font size;
+}
+
+.fa.disabled{
+    color:grey;
+}
