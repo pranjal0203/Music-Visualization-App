@@ -110,7 +110,7 @@ function changeCurrentSongDetails(songObj) {
 }
 
 //calling function currentTime on window loading and after every 1 sec
-window.onload = function(){
+$(document).ready(function (){
 
       updateCurrentTime();
 
@@ -138,7 +138,11 @@ window.onload = function(){
             paging: false
           });
 
-} //End of windows loading
+          //visual
+
+
+
+}); //End of windows loading
 
 //Front page with welcoming the user and opening song gallery then
       $('.welcome-screen button').on('click', function() {
